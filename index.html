@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>アビーロード会計ホーム</title>
+  <style>
+    html, body {
+      height: 100%; /* 高さを100%に */
+      margin: 0;
+      font-family: "Yu Gothic", sans-serif;
+      background-color: #b0c4de; /* 紺色 */
+      color: #333;
+      display: flex;
+      justify-content: center; /* 横方向中央 */
+      align-items: center;     /* 縦方向中央 */
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+      color: #2c3e50;
+    }
+
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .topic-card {
+      background: #f9f9f9;
+      padding: 20px;
+      width: 250px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .topic-card a {
+      text-decoration: none;
+      color: #34495e;
+      font-weight: bold;
+      display: block;
+      font-size: 1.1em;
+    }
+
+    /* フッターを作って寂しくないように */
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #f9f9f9;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>アビーロード会計</h1>
+
+    <div class="topics">
+      <div class="topic-card">
+        <a href="topic1.html">はじめに</a>
+      </div>
+      <div class="topic-card">
+        <a href="テンプレ（飲みあり）.html">テンプレ（飲みあり）</a>
+      </div>
+      <div class="topic-card">
+        <a href="topic3.html">テンプレ（飲みなし）</a>
+      </div>
+      <div class="topic-card">
+        <a href="topic4.html">テンプレ（追いコン）</a>
+      </div>
+      <div class="topic-card">
+        <a href="topic5.html">テンプレ（アコラ、合宿）</a>
+      </div>
+      <div class="topic-card">
+        <a href="topic6.html">全学年</a>
+      </div>
+    </div>
+
+    <footer>© 2025 アビーロード会計</footer>
+  </div>
+</body>
+</html>
