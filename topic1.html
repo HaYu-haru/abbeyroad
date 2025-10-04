@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>シンプルでかっこいいページ</title>
+<style>
+  body {
+    margin:0;
+    font-family: 'Noto Sans JP', sans-serif;
+    background:#b0c4de; /* 白っぽい背景 */
+    color:#333;
+    line-height:1.8;
+    padding:50px;
+  }
+
+  .content {
+    max-width:800px;
+    margin:0 auto;
+    padding:60px 40px;
+    background:#f9f9f9; /* 中央部分だけ色を変える */
+    box-shadow:0 4px 20px rgba(0,0,0,0.05); /* うっすら影で浮かせる */
+  }
+
+  h1 {
+    font-size:2.8em;
+    text-align:center;
+    letter-spacing:0.08em;
+    margin-bottom:40px;
+    border-bottom:2px solid #ddd;
+    padding-bottom:15px;
+  }
+  p {
+    max-width:800px;
+    margin:25px auto;
+    font-size:1.1em;
+  }
+  .highlight {
+    font-weight:bold;
+    border-left:4px solid #333;
+    padding-left:10px;
+  }
+  /* スクロールをスムーズにする */
+  html {
+    scroll-behavior: smooth;
+  }
+
+h2 {
+    font-size: 1em;
+    margin: 50px 0 20px;
+    padding: 10px 15px;
+    border-left: 6px solid #4B0082; /* 左に太いライン */
+    background: #f0f0ff;           /* 薄い背景色 */
+    color: #222;
+    font-weight: bold;
+  }  
+
+/* 戻るリンク */
+a.back {
+  display: inline-block;
+  margin-top: 20px;
+  color: #3498db;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="content">
+<a class="back" href="index.html">&larr; ホームに戻る</a>
+    <h1>はじめに</h1>
+
+    <!-- 目次 -->
+    <p class="highlight">会計の仕事内容 ＜目次＞</p>
+    <p>
+      <a href="#sec1">① 各ライブごとの料金計算</a><br>
+      <a href="#sec2">② 年間予算の仮決め</a><br>
+      <a href="#sec3">③ 助成金申請</a><br>
+      <a href="#sec4">④ 飲み会係</a>
+    </p>
+
+    <!-- ジャンプ先 -->
+    <h2 id="sec1">① 各ライブごとの料金計算</h2>
+    <p>テンプレを使用して料金を決め、回収までを行う。</p>
+    <p class="highlight">下準備</p>
+    <p>
+      ・副支部よりライブのgoogleフォームを共有してもらう<br>
+      ・飲み会係より飲み会名簿（googleフォーム）の共有をしてもらう</p>
+
+    <p class="highlight">注意点</p>
+    <p>大体の目安として毎ライブ20000円程度余るように回収すると丁度良い（聞いていない機材費や、延長料金等…）</p>
+
+    <h2 id="sec2">② 年間予算の仮決め</h2>
+    <p>毎年卒業ライブ後、来年度の予算を決める</p>
+    <p>毎年卒業ライブ後、来年度の予算を決める</p>
+
+    <h2 id="sec3">③ 助成金申請</h2>
+    <p><strong>学生部のページより申請</strong>　　<a href="https://gakuseibu.meiji.jp/begin/login" target="_blank">学生部サイトへ移動</a></p>
+    <p>1.連合父母会課外活動助成金（6月頃）<br>2.サークル活動奨励金<br>3.課題活動助成金（学外施設利用助成）</p>
+    <p>主にこの三種類の申請が可能。</p>
+    <p>・連合父母会については11月頃に報告書を提出しないと来年度もらえなくなるので注意。<br>・申請には<span style="color: red;">領収書</span>の提出が必須のため失くさないよう注意</p>
+
+    <h2 id="sec4">④ 飲み会会場予約</h2>
+    <p>これは年度によって会計係が設定されるか、会計統合されるかは不明</p>
+  </div>
+</body>
+</html>
