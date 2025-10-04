@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>エクセル操作手順</title>
+
+<style>
+/* 全体設定 */
+body {
+  font-family: "Yu Gothic", sans-serif;
+  margin:0;
+  background:#b0c4de; /* 左右の紺色 */
+  display:flex;
+  justify-content:center; /* 中央寄せ */
+}
+
+.main-content {
+  width: 100%;
+  max-width: 900px;       /* コンテンツ幅に合わせる */
+  background-color: #f9f9f9; /* 中央白 */
+  padding: 20px;
+  box-sizing: border-box;
+  color:#333;
+  text-align:center;
+}
+
+/* ページ題名 */
+h1 {
+  margin:30px 0 10px;
+  font-size:28px;
+  font-weight:bold;
+}
+
+/* 副題バナー */
+.subtitle-banner {
+  background-color: #5D86C6;
+  color: white;
+  padding: 12px 0;
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ステップ見出し */
+h2 {
+  margin:25px 0 10px;
+  font-size:22px;
+}
+
+/* ステップごとのコンテンツブロック */
+.content {
+  margin:0 auto 30px;
+  width: 100%;       /* 親幅に合わせる */
+  max-width: 900px;  /* 白背景幅に合わせる */
+}
+
+/* 画像ブロック */
+.image-block {
+  margin:20px 0;
+  position:relative;
+}
+
+.image-block img {
+  width:100%;   /* 親幅に合わせる */
+  height:auto;
+  border:1px solid #ddd;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  cursor:pointer;
+}
+
+/* 説明文 */
+.text-box {
+  width: 100%;
+  max-width: 700px;
+  margin: 15px auto 0;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: "Roboto", "Helvetica Neue", "Yu Gothic", "Hiragino Sans", sans-serif;
+}
+
+.description {
+  margin-top:10px;
+  font-size:16px;
+  color:#555;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+/* 画像切替ボタン */
+.switch-buttons {
+  margin-top:8px;
+}
+.switch-buttons button {
+  margin:0 5px;
+  padding:6px 12px;
+  font-size:14px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  background-color:#3498db;
+  color:white;
+  transition:0.3s;
+}
+.switch-buttons button:hover {
+  background-color:#2980b9;
+}
+
+/* モーダル */
+.modal {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.85);
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:1000;
+  padding:20px;
+  box-sizing:border-box;
+  overflow:auto;
+}
+.modal img {
+  max-width:85%;
+  max-height:85%;
+  width:auto;
+  height:auto;
+  border-radius:10px;
+}
+.modal .caption {
+  margin-top:12px;
+  color:#fff;
+  text-align:center;
+  font-size:16px;
+  max-width:90%;
+}
+.modal .modal-nav {
+  margin-top:10px;
+}
+.modal .modal-nav button {
+  margin:0 5px;
+  padding:6px 12px;
+  font-size:14px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  background:#e67e22;
+  color:white;
+}
+.modal .modal-nav button:hover {
+  background:#d35400;
+}
+
+/* モーダル閉じる */
+.close {
+  position:absolute;
+  top:20px; right:40px;
+  font-size:40px;
+  font-weight:bold;
+  color:white;
+  cursor:pointer;
+}
+
+/* 戻るリンク */
+a.back {
+  display: inline-block;
+  margin-top: 20px;
+  color: #3498db;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* トップへ戻るボタン */
+    #backToTop {
+      display: none; /* 初期は非表示 */
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      background-color: #5D86C6;
+      color: white;
+      cursor: pointer;
+      padding: 12px 18px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    #backToTop:hover {
+      background-color: #333;
+    }
+
+</style>
+</head>
+<body>
+<div class="main-content">
+<a class="back" href="index.html">&larr; ホームに戻る</a>
+<h1>エクセル操作手順</h1>
+
+<div class="subtitle-banner">準備編</div>
+
+<!-- ステップ1 -->
+<h2>① テンプレ（飲みあり）を開く</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step1-img" src="images/1.jpg" alt="エクセル表 初期画面" onclick="openModal('step1',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step1-desc">Excelを開き、【テンプレ（飲みあり）】の表を選択してください。</div>
+  </div>
+</div>
+
+<!-- ステップ2 -->
+<h2>② コピー元を選択する</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step2-img" src="images/2.jpg" alt="コピー元を選択" onclick="openModal('step2',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step2-desc">コピーしたい範囲を選択してください。</div>
+  </div>
+</div>
+
+<!-- ステップ3 -->
+<h2>③ コピー操作</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step3-img" src="images/3-2.jpg" alt="コピー操作" onclick="openModal('step3',0)">
+    <div class="switch-buttons">
+      <button onclick="switchStepImage('step3',0)">画像1</button>
+      <button onclick="switchStepImage('step3',1)">画像2</button>
+    </div>
+    <div class="text-box">
+      <div class="description" id="step3-desc">①移動先は一番上を選択。</div>
+  </div>
+</div>
+
+<h2>④ 複製した表の名前を変更する</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step4-img" src="images/4.jpg" alt="コピー元を選択" onclick="openModal('step4',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step4-desc">複製した表をダブルクリックOR右クリックをし、表の名前をライブにあった名前に変更する。</div>
+  </div>
+</div>
+
+<div class="subtitle-banner">名簿作成</div>
+
+<h2>⑤ 氏名表作成</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step5-img" src="images/5.jpg" alt="コピー操作" onclick="openModal('step5',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step5-desc">テンプレート上V～Qの部分にGoogleフォームで集めた名簿を持ってくる</div>
+  </div>
+</div>
+
+<h2>⑥ 氏名表作成２</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step6-img" src="images/6.jpg" alt="コピー操作" onclick="openModal('step6',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step6-desc">googleフォーム上のボーカル‐キーボードをコピー</div>
+    </div>
+</div>
+
+<h2>⑦ 氏名表作成（貼り付け）</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step7-img" src="images/7-1.jpg" alt="コピー操作" onclick="openModal('step7',0)">
+    <div class="switch-buttons">
+      <button onclick="switchStepImage('step7',0)">画像1</button>
+      <button onclick="switchStepImage('step7',1)">画像2</button>
+    </div>
+    <div class="text-box">
+      <div class="description" id="step7-desc">①氏名の真下のセルを右クリック</div>
+    </div>
+</div>
+
+<h2>⑧ 氏名表作成</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step8-img" src="images/8.jpg" alt="コピー操作" onclick="openModal('step8',0)">
+    <div class="switch-buttons">
+      <button onclick="switchStepImage('step8',0)">画像1</button>
+      <button onclick="switchStepImage('step8',1)">画像2</button>
+    </div>
+    <div class="text-box">
+      <div class="description" id="step8-desc">①青く変化しないセルは間違っているため、正しい名前に変更する。</div>
+    </div>
+</div>
+
+<h2>⑨ 氏名表作成２</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step9-img" src="images/9.jpg" alt="コピー操作" onclick="openModal('step9',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step9-desc">①氏名表の隣にある氏名列（O列）を選択してコピー</div>
+    </div>
+</div>
+
+<h2>⑩ 氏名表作成</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step10-img" src="images/8.jpg" alt="コピー操作" onclick="openModal('step10',0)">
+    <div class="switch-buttons">
+      <button onclick="switchStepImage('step10',0)">画像1</button>
+      <button onclick="switchStepImage('step10',1)">画像2</button>
+    </div>
+    <div class="text-box">
+      <div class="description" id="step10-desc">①列Bを選択して右クリック　※Ctrl＋Vでは貼り付けないように注意する。</div>
+    </div>
+</div>
+
+<h2>⑪ 飲み会参加名簿作成</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step11-img" src="images/11.jpg" alt="コピー操作" onclick="openModal('step11',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step11-desc">googleフォーム上の飲み会参加者をコピー</div>
+    </div>
+</div>
+
+<h2>⑫ 飲み会参加名簿作成（貼り付け）</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step12-img" src="images/12.jpg" alt="コピー操作" onclick="openModal('step12',0)">
+    <div class="switch-buttons">
+      <button onclick="switchStepImage('step12',0)">画像1</button>
+      <button onclick="switchStepImage('step12',1)">画像2</button>
+    </div>
+    <div class="text-box">
+      <div class="description" id="step12-desc">①飲み会列（列W）を右クリック</div>
+    </div>
+</div>
+
+<h2>⑬ 飲み会参加名簿作成</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step13-img" src="images/11.jpg" alt="コピー操作" onclick="openModal('step13',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step13-desc">「飲み会のみ」と書いてあるセルを下まで反映させる（セル右下■をダブルクリック）</div>
+    </div>
+</div>
+
+<h2>⑭ セル内の関数反映</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step14-img" src="images/14.jpg" alt="コピー操作" onclick="openModal('step14',0)">
+    <div class="switch-buttons">
+      <button onclick="switchStepImage('step14',0)">画像1</button>
+      <button onclick="switchStepImage('step14',1)">画像2</button>
+    </div>
+    <div class="text-box">
+      <div class="description" id="step14-desc">①セルA2を下まで反映させる（セル右下■をダブルクリック）</div>
+    </div>
+</div>
+
+<h2>⑮ 表の並べ替え</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step15-img" src="images/15.jpg" alt="コピー操作" onclick="openModal('step15',0)">
+    <div class="switch-buttons">
+      <button onclick="switchStepImage('step15',0)">画像1</button>
+      <button onclick="switchStepImage('step15',1)">画像2</button>
+    </div>
+    <div class="text-box">
+      <div class="description" id="step14-desc">①学年～支払い済み列（列A～列G）を選択</div>
+    </div>
+</div>
+
+<h2>⑯ 飲み会参加名簿作成</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step16-img" src="images/11.jpg" alt="コピー操作" onclick="openModal('step16',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step16-desc">「飲み会のみ」と書いてあるセルを下まで反映させる（セル右下■をダブルクリック）</div>
+    </div>
+</div>
+
+<h2>⑰ 表の並べ替え</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step15-img" src="images/17.jpg" alt="コピー操作" onclick="openModal('step17',0)">
+    <div class="switch-buttons">
+      <button onclick="switchStepImage('step17',0)">画像1</button>
+      <button onclick="switchStepImage('step17',1)">画像2</button>
+    </div>
+    <div class="text-box">
+      <div class="description" id="step17-desc">①学年～支払い済み列（列A～列G）を選択</div>
+    </div>
+</div>
+
+<h2>⑱ 飲み会参加名簿作成</h2>
+<div class="content">
+  <div class="image-block">
+    <img id="step18-img" src="images/18.jpg" alt="コピー操作" onclick="openModal('step18',0)">
+    </div>
+    <div class="text-box">
+      <div class="description" id="step18-desc">「飲み会のみ」と書いてあるセルを下まで反映させる（セル右下■をダブルクリック）</div>
+    </div>
+</div>
+
+<!-- モーダル -->
+<div id="modal" class="modal" onclick="closeModal(event)">
+  <span class="close" onclick="closeModal(event)">&times;</span>
+  <img id="modal-img">
+  <div id="modal-desc" class="caption"></div>
+  <div class="modal-nav">
+    <button onclick="prevModal()">← 前</button>
+    <button onclick="nextModal()">次 →</button>
+  </div>
+</div>
+
+<button onclick="topFunction()" id="backToTop">▲ TOP</button>
+
+<script>
+const steps = {
+  step1:[{src:'images/1.jpg',desc:'Excelを開き、【テンプレ（飲みあり）】の表を選択してください。'}],
+  step2:[{src:'images/2.jpg',desc:'コピーしたい範囲を選択する。'}],
+  step3:[{src:'images/3-2.jpg',desc:'①移動先は一番上を選択。'},
+         {src:'images/3.jpg',desc:'②コピーを作成にチェックを入れる。'}],
+  step4:[{src:'images/4.jpg',desc:'複製した表をダブルクリックOR右クリックをし、表の名前をライブにあった名前に変更する。'}],
+  step5:[{src:'images/5.jpg',desc:'テンプレート上V～Qの部分にGoogleフォームで集めた名簿を持ってくる。'}],
+  step6:[{src:'images/6.jpg',desc:'Googleフォームのスプレッドシートより出演者の名前を範囲選択してコピー（右クリック OR Ctrl＋C）。'}],
+  step7:[{src:'images/7-1.jpg',desc:'①氏名の真下のセルを右クリック ※Ctrl＋Vでは貼り付けないように注意する。'},
+         {src:'images/7.jpg',desc:'②表示されるメニューから 「貼り付け先の書式に合わせる」 を選択し、貼り付け'}],
+  step8:[{src:'images/8.jpg',desc:'①青く変化しないセルは間違っているため、正しい名前に変更する。'},
+         {src:'images/8-2.jpg',desc:'②詳しくは画像参照'}],
+  step9:[{src:'images/9.jpg',desc:'氏名表の隣にある氏名列（O列）を選択してコピー'}],
+  step10:[{src:'images/10.jpg',desc:'①列Bを選択して右クリック　※Ctrl＋Vでは貼り付けないように注意する。'},
+         {src:'images/10-2.jpg',desc:'②表示されるメニューから 「貼り付け先の書式に合わせる」 を選択し、貼り付け'}],
+  step11:[{src:'images/11.jpg',desc:'googleフォーム上の飲み会参加者をコピー'}],
+  step12:[{src:'images/12.jpg',desc:'①飲み会列（列W）を右クリック'},
+         {src:'images/12-2.jpg',desc:'②表示されるメニューから 「貼り付け先の書式に合わせる」 を選択し、貼り付け'}],
+  step13:[{src:'images/13.jpg',desc:'「飲み会のみ」と書いてあるセルを下まで反映させる（セル右下■をダブルクリック）'}],
+  step14:[{src:'images/14.jpg',desc:'①セルA2を下まで反映させる（セル右下■をダブルクリック）'},
+         {src:'images/14-2.jpg',desc:'②同様にC-G列まで2行目のセルを下まで反映させる'}],
+  step15:[{src:'images/15.jpg',desc:'①学年～支払い済み列（列A～列G）を選択'},
+         {src:'images/15-2.jpg',desc:'②「ホーム」の並び替えを選択し、降順で並び替える'}],
+  step16:[{src:'images/16.jpg',desc:'基礎費を変更し、ライブに合わせた支払額に調整'}],
+  step17:[{src:'images/17.jpg',desc:'①金額の上がり幅変更はL列の金額セルの式から調節可能（デフォルトは上がり幅+500）'},
+         {src:'images/17-2.jpg',desc:'②式内に存在する「＄＄」を変更すると基礎費が適用されなくなるので注意'}],
+  step18:[{src:'images/18.jpg',desc:'備考欄に「遅れ」と記入することで自動的に支払い遅れペナルティーが加算される'}]
+};
+
+let currentStep = '';
+let currentIndex = 0;
+
+function switchStepImage(stepId,index){
+  currentStep = stepId;
+  currentIndex = index;
+  document.getElementById(stepId+'-img').src = steps[stepId][index].src;
+  document.getElementById(stepId+'-desc').innerText = steps[stepId][index].desc;
+}
+
+function openModal(stepId,index){
+  currentStep = stepId;
+  currentIndex = index;
+  document.getElementById('modal').style.display = 'flex';
+  document.getElementById('modal-img').src = steps[stepId][index].src;
+  document.getElementById('modal-desc').innerText = steps[stepId][index].desc;
+
+  // 画像が1枚しかない場合は前後ボタンを非表示
+  const nav = document.querySelector('.modal-nav');
+  if(steps[stepId].length <= 1){
+    nav.style.display = 'none';
+  } else {
+    nav.style.display = 'block';
+  }
+}
+
+function closeModal(event){
+  if(event.target.classList.contains('modal') || event.target.classList.contains('close')){
+    document.getElementById('modal').style.display = 'none';
+  }
+}
+
+function prevModal(){
+  currentIndex = (currentIndex - 1 + steps[currentStep].length) % steps[currentStep].length;
+  updateImages();
+}
+
+function nextModal(){
+  currentIndex = (currentIndex + 1) % steps[currentStep].length;
+  updateImages();
+}
+
+function updateImages(){
+  document.getElementById('modal-img').src = steps[currentStep][currentIndex].src;
+  document.getElementById('modal-desc').innerText = steps[currentStep][currentIndex].desc;
+  document.getElementById(currentStep+'-img').src = steps[currentStep][currentIndex].src;
+  document.getElementById(currentStep+'-desc').innerText = steps[currentStep][currentIndex].desc;
+}
+
+// ボタンを取得
+    let mybutton = document.getElementById("backToTop");
+
+    // スクロールイベントでボタン表示制御
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // ページトップに戻る
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+</script>
+</div>
+</body>
+</html>
